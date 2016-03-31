@@ -36,7 +36,7 @@ describe 'telegraf::input' do
       "snmp.host" => {
         "address"   => "snmp_host1:161",
         "community" => "read_only",
-        "version"   => "2",
+        "version"   => 2,
         "get_oids"  => ["1.3.6.1.2.1.1.5",],
       },
     },
@@ -51,7 +51,7 @@ describe 'telegraf::input' do
       should contain_file(filename).with_content(/\[\[inputs.snmp.host\]\]/)
       should contain_file(filename).with_content(/  address = "snmp_host1:161"/)
       should contain_file(filename).with_content(/  community = "read_only"/)
-      should contain_file(filename).with_content(/  version = "2"/)
+      should contain_file(filename).with_content(/  version = 2/)
       should contain_file(filename).with_content(/  get_oids = \["1.3.6.1.2.1.1.5"\]/)
     end
 

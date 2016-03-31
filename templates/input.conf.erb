@@ -13,8 +13,8 @@
 
 [[inputs.<%= "#{k}" %>]]
 <%     @sections[k].keys.sort.each do |v| -%>
-<% if @sections[k][v].kind_of?(Array) -%>
-<%= "  #{v} = #{@sections[k][v]}\"" %>
+<% if @sections[k][v].kind_of?(Array) or @sections[k][v].is_a?(Integer) -%>
+<%= "  #{v} = #{@sections[k][v]}" %>
 <% else -%>
 <%= "  #{v} = \"#{@sections[k][v]}\"" %>
 <% end -%>
