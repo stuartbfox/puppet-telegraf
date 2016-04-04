@@ -104,14 +104,14 @@ Will create the file `/etc/telegraf/telegraf.d/my_exec.conf`
 
 Example 2
 
-    telegraf::input { 'influxdb-dc1':
+    telegraf::input { 'influxdb-dc':
       plugin_type => 'influxdb',
       options => {
-        'urls' => ['http://remote-dc1:8086',],
+        'urls' => ['http://remote-dc:8086',],
       },
     }
 
-Will create the file `/etc/telegraf/telegraf.d/influxdb-dc1.conf`
+Will create the file `/etc/telegraf/telegraf.d/influxdb-dc.conf`
 
     [[inputs.influxdb]]
       urls = ["http://remote-dc:8086"]
