@@ -114,7 +114,7 @@ Example 2
 Will create the file `/etc/telegraf/telegraf.d/influxdb-dc1.conf`
 
     [[inputs.influxdb]]
-      urls = ["http://localhost:8086"]
+      urls = ["http://remote-dc:8086"]
 
 Example 3
 
