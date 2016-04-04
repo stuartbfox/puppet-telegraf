@@ -140,7 +140,6 @@ Will create the file `/etc/telegraf/telegraf.d/snmp.conf`
     [[inputs.snmp.host]]
       address = "snmp_host1:161"
       community = "read_only"
-      version = 2
       get_oids = ["1.3.6.1.2.1.1.5"]
 
 ## Limitations
