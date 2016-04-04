@@ -1,4 +1,4 @@
-[[inputs.<%= @name %>]]
+[[inputs.<%= @plugin_type %>]]
 <% if defined?(@options)
      @options.keys.sort.each do |k| -%>
 <% if @options[k].kind_of?(Array) -%>
@@ -8,15 +8,17 @@
 <% end -%>
 <%   end
    end -%>
+
 <% if defined?(@sections)
      @sections.keys.each do |k| -%>
-
 [[inputs.<%= "#{k}" %>]]
 <%     @sections[k].keys.sort.each do |v| -%>
-<% if @sections[k][v].kind_of?(Array) or @sections[k][v].is_a?(Integer) -%>
+<% if @sections[k][v].is_a?(String) -%>
+<%= "  #{v} = \"#{@sections[k][v]}\"" %>
+<% elsif @sections[k][v].kind_of?(Array) -%>
 <%= "  #{v} = #{@sections[k][v]}" %>
 <% else -%>
-<%= "  #{v} = \"#{@sections[k][v]}\"" %>
+<%  v = @sections[k][v] %>
 <% end -%>
 <%     end
      end

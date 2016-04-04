@@ -10,10 +10,19 @@
 #   Some inputs take multiple sections
 
 define telegraf::input (
-  $options  = undef,
-  $sections = undef,
+  $plugin_type = undef,
+  $options    = undef,
+  $sections   = undef,
 ) {
   include telegraf
+
+  if $options {
+    validate_hash($options)
+  }
+
+  if $sections {
+    validate_hash($sections)
+  }
 
   Class['telegraf::config']
   ->
