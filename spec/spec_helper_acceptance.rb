@@ -15,13 +15,16 @@ RSpec.configure do |c|
 
   # Configure all nodes in nodeset
   c.before :suite do
+    on 'debian', 'apt-get -y install apt-transport-https'
+    on 'debian', puppet('module', 'install', 'puppetlabs-apt'), { :acceptable_exit_codes => [0,1] }
+    on 'ubuntu-14.04', puppet('module', 'install', 'puppetlabs-apt'), { :acceptable_exit_codes => [0,1] }
+
     # Install module
     # We assume the module is in auto load layout
     puppet_module_install(:source => proj_root, :module_name => 'telegraf')
     # Install dependancies
     hosts.each do |host|
       on host, puppet('module', 'install', 'puppetlabs-stdlib'), { :acceptable_exit_codes => [0,1] }
-      on host, puppet('module', 'install', 'puppetlabs-apt'), { :acceptable_exit_codes => [0,1] }
     end
   end
 end

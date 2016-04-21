@@ -1,10 +1,13 @@
 HOSTS:
   centos-7-x64:
     platform: el-7-x86_64
-    box: puppetlabs/centos-7.2-64-nocm
-    box_url: https://vagrantcloud.com/puppetlabs/boxes/centos-7.2-64-nocm
-    hypervisor: vagrant
+    hypervisor : docker
+    image: centos:7
+    docker_preserve_image: false
+    docker_cmd: '["/usr/sbin/sshd -D"]'
 CONFIG:
-  masterless: true
-  log_level: verbose
   type: foss
+  log_level: debug
+ssh:
+  password: root
+  auth_methods: ["password"]

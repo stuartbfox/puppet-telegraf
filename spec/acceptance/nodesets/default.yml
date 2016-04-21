@@ -6,6 +6,12 @@ HOSTS:
     docker_preserve_image: true
     docker_image_commands:
       - 'apt-get install -y apt-transport-https'
+  centos-7-x64:
+    platform: el-7-x86_64
+    hypervisor : docker
+    image: centos:7
+    docker_preserve_image: false
+    docker_cmd: '["/usr/sbin/sshd -D"]'
 CONFIG:
   log_level: verbose
   masterless: true

@@ -8,6 +8,9 @@
 #   String. State of the telegraf package. You can also specify a
 #   particular version to install.
 #
+# [*purge*]
+#   Delete inputs configs before applying new ones
+#
 # [*config_file*]
 #   String. Path to the configuration file.
 #
@@ -59,6 +62,7 @@
 #
 class telegraf (
   $ensure                 = $telegraf::params::ensure,
+  $purge                  = $telegraf::params::purge,
   $config_file            = $telegraf::params::config_file,
   $hostname               = $telegraf::params::hostname,
   $interval               = $telegraf::params::interval,
@@ -79,6 +83,7 @@ class telegraf (
 {
 
   validate_string($ensure)
+  validate_bool($purge)
   validate_string($config_file)
   validate_string($hostname)
   validate_string($interval)
